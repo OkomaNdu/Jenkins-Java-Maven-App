@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-@Library('Jenkins-shared-Library') _
+@Library('Jenkins-shared-Library')
 
 
 pipeline {
