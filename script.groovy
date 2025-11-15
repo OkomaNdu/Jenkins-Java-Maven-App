@@ -1,5 +1,5 @@
 
-def buildJar() {
-    echo 'build the application...'
+def deployApp() {
+    echo 'deploying the application...'
 }
 return this
