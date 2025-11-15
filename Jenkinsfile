@@ -21,6 +21,13 @@ pipeline {
                 }
             }
         }
+        stage('test app') {
+            steps {
+                script{
+                    echo 'testing the application...'
+                }
+            }
+        }
         stage('build app') {
             steps {
                 script{
@@ -44,7 +51,27 @@ pipeline {
         stage("deploy") {
             steps {
                 script{
-                   echo 'deploying the application....'
+                   echo 'deploying the application...'
+                }
+            }
+        }
+        stage('commit version update') {
+            steps {
+                script {
+                   withCredentials([usernamePassword(credentialsId: 'gitlab-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                      sh 'git config --global user.email "ndu2okoma@gmail.com"'
+                      sh 'git config --global user.name "OkomaNdu"'
+
+                      sh 'git status'
+                      sh 'git branch'
+                      sh 'git config --list'
+
+
+                      sh 'git remote set-url origin https://${USER}:${PASS}@github.com/OkomaNdu/Jenkins-Java-Maven-App.git'
+                      sh 'git add .'
+                      sh 'git commit -m "ci: version bump"'
+                      sh 'git push origin HEAD:jenkins-jobs'
+                   }
                 }
             }
         }
