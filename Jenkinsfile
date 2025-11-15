@@ -1,7 +1,10 @@
 #!/usr/bin/env groovy
 
-@Library('Jenkins-Shared-Library')
-def gv
+library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
+        [$class: 'GitSCMSource',
+        remote: 'https://github.com/OkomaNdu/Jenkins-Java-Maven-App.git',
+        credentialsId: 'GitHub-Credentials'])
+
 
 pipeline  {
     agent any
