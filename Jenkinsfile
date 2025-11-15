@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 
-@Library('Jenkins-shared-Library')
+@Library('Jenkins-Shared-Library') _
 
 
-pipeline {
+pipeline  {
     agent any
     tools {
          maven 'maven-3.9'
