@@ -50,15 +50,16 @@ pipeline {
         }
         stage("deploy") {
             steps {
-                script{
+                script {
                    echo 'deploying the application...'
                 }
             }
         }
+
         stage('commit version update') {
             steps {
                 script {
-                   withCredentials([usernamePassword(credentialsId: 'gitlab-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                   withCredentials([usernamePassword(credentialsId: 'GitHub-Credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                       sh 'git config --global user.email "ndu2okoma@gmail.com"'
                       sh 'git config --global user.name "OkomaNdu"'
 
